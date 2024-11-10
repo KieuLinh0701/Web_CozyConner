@@ -6,6 +6,7 @@ public class Constant {
 
 	//Địa chỉ file .jsp
 	public static final String HOME = "/views/home.jsp";
+	public static final String ADMIN_HOME = "/views/admin/home.jsp";
 	public static final String REGISTER = "/views/register.jsp";
 	public static final String LOGIN = "/views/login.jsp";
 	public static final String CONFIRM_OTP = "/views/confirm-otp.jsp";

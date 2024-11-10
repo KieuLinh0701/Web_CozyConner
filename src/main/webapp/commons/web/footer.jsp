@@ -9,7 +9,7 @@
 				<address class="margin-bottom-40">
 					1, Vo Van Ngan street, Linh Chieu, Thu Duc, Ho Chi Minh , Viet Nam<br>
 					Phone: 012 123 2345<br> 
-					Email: <a href="mailto:uynukieulinh@gmail.com">cozyconner@gmail.com</a><br>
+					Email: <a href="mailto:cozyconnerweb@gmail.com">cozyconner@gmail.com</a><br>
 				</address>
 			</div>
 		</div>

@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	Trang chủ của admin
-</body>
-</html>
+	pageEncoding="UTF-8"%>
+
+<!-- BEGIN SLIDER -->
+<%@ include file="/../commons/web/slider.jsp"%>
+<!-- END SLIDER -->
+
+<!-- BEGIN BEST-SELLER -->
+<%@ include file="/../commons/web/best-sellers.jsp"%>
+<!-- BEGIN BEST-SELLER -->
+

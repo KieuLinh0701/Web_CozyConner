@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<head>
+    <style>
+        .admin-theme {
+            display: none;
+        }
+    </style>
+</head>
+
 <!-- DangNhap, DangKy -->
 <!-- BEGIN TOP BAR -->
 <div class="pre-header">
@@ -69,7 +77,7 @@
 			<ul>
 				<li> <a href="#"> Blogs </a></li>
 				<li> <a href="#"> Design ideas </a></li>
-				<li> <a href="#"> Admin theme </a></li>
+				<li class="admin-theme"> <a href="#"> Admin theme </a></li>
 
 				<!-- BEGIN TOP SEARCH -->
 				<li class="menu-search"><span class="sep"></span> 
@@ -92,4 +100,16 @@
 	</div>
 </div>
 <!-- Header END -->
-						
+
+<script>
+	//Lấy URL hiện tại
+	const currentUrl = window.location.href;
+	
+	// Lấy phần tử li
+	const adminTheme = document.querySelector('.admin-theme');
+	
+	// Kiểm tra và hiển thị/ẩn
+	if (currentUrl.includes('admin')) {
+	  adminTheme.style.display = 'block';
+	}
+</script>						

@@ -72,6 +72,7 @@
 		</div>
 	</div>
 </div>
+<!-- END CONTENT -->
 
 
 <script>
@@ -84,10 +85,10 @@
 		
 		//Kiểm tra email
 		if (email === "") {
-			document.getElementById("emailError").textContent = "Vui lòng nhập địa chỉ email";
+			document.getElementById("emailError").textContent = "Please enter your email address!";
 			hasError = true;
 		} else if (!validateEmail(email)) {
-		    document.getElementById("emailError").textContent = "Địa chỉ email không hợp lệ";
+		    document.getElementById("emailError").textContent = "Email address is not valid!";
 		    hasError = true;
 		} else {
 			document.getElementById("emailError").textContent   = "";
@@ -95,10 +96,10 @@
 		
 		//Kiểm tra password
 		if (password === "") {
-			document.getElementById("passwordError").textContent = "Vui lòng nhập mật khẩu";
+			document.getElementById("passwordError").textContent = "Please enter your password!";
 			hasError = true;
 		} else if (!validatePasswordStrength(password)) {
-		    document.getElementById("passwordError").textContent = "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt";
+		    document.getElementById("passwordError").textContent = "The password must be a minimum of 8 characters with a combination of upper and lower case letters, numbers, and special characters (@$!%*?_&)!";
 		    hasError = true;
 		} else {
 			document.getElementById("passwordError").textContent = "";
@@ -106,10 +107,10 @@
 		
 		//Kiểm tra confirmPassword
 		if (confirmPassword === "") {
-			document.getElementById("confirmPasswordError").textContent = "Vui lòng nhập mật khẩu xác nhận";
+			document.getElementById("confirmPasswordError").textContent = "Please confirm your password!";
 			hasError = true;
 		} else if (confirmPassword !== password) {
-			document.getElementById("confirmPasswordError").textContent = "Mật khẩu xác nhận không khớp";
+			document.getElementById("confirmPasswordError").textContent = "Your password and your confirmed password do not match!";
 			hasError = true;
 		} else {
 			document.getElementById("confirmPasswordError").textContent = "";
@@ -129,4 +130,3 @@
 		return passwordRegex.test(password);
 	}
 </script>
-<!-- END CONTENT -->

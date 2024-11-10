@@ -12,12 +12,16 @@
 				<c:if test="${alert !=null}">
 					<h3 class="alert alertdanger">${alert}</h3>
 				</c:if>
-				<form action="${pageContext.request.contextPath}/login" method="post" class="form-horizontal form-without-legend" role="form">
+				<form action="${pageContext.request.contextPath}/login" 
+				method="post" class="form-horizontal form-without-legend" 
+				role="form"
+				onsubmit="return validateForm()">
 					<div class="form-group">
 						<label for="email" class="col-lg-4 control-label">Email <span
 							class="require">*</span></label>
 						<div class="col-lg-8">
 							<input type="text" class="form-control" id="email" name="email" require>
+							<span id="emailError" class="error-message" style="color:#E02222; font-size:12px; font-style:italic;"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -26,6 +30,8 @@
 						</label>
 						<div class="col-lg-8">
 							<input type="password" class="form-control" id="password" name="password">
+							<span id="passwordError" class="password-message" style="color:#E02222; font-size:12px; font-style:italic;"></span>
+							<br>
 							<input type="checkbox" checked="checked" name="remember"> Remember me
 						</div>
 					</div>
@@ -56,4 +62,29 @@
 </div>
 <!-- END CONTENT -->
 
+<script>
+	function validateForm() {
+		const email = document.getElementById("email").value;
+		const password = document.getElementById("password").value;
 
+		let hasError = false;
+		
+		//Kiểm tra email
+		if (email === "") {
+			document.getElementById("emailError").textContent = "Please enter your email address!";
+			hasError = true;
+		} else {
+			document.getElementById("emailError").textContent   = "";
+		}
+		
+		//Kiểm tra password
+		if (password === "") {
+			document.getElementById("passwordError").textContent = "Please enter your password!";
+			hasError = true;
+		} else {
+			document.getElementById("passwordError").textContent = "";
+		}
+		
+		return !hasError;
+	}
+</script>
