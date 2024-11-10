@@ -23,4 +23,6 @@ public interface IUserDao {
 	void update(User user);
 
 	void insert(User user);
+	
+	Boolean checkEmail(String email);
 }

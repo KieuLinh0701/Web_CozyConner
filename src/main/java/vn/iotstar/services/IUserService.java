@@ -23,4 +23,6 @@ public interface IUserService {
 	void update(User user);
 
 	void insert(User user);
+	
+	Boolean checkEmail(String email);
 }

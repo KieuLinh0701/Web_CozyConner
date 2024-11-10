@@ -29,13 +29,10 @@ public class RegisterController extends HttpServlet{
 		String url = req.getRequestURI();
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
-		
 		String email = req.getParameter("email");
-		User user = userService.findByEmail(email);
-		if (url.contains("add"))
-		if (user != null) {
-			req.getRequestDispatcher(Constant.CONFIRM_OTP).forward(req, resp);
-		}
+		String password = req.getParameter("password");
+		String confirmPassword = req.getParameter("confirmPassword");
+		
 		
 	}
 }

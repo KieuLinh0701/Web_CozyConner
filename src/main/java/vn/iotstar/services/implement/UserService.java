@@ -61,4 +61,9 @@ public class UserService implements IUserService{
 		return userDao.findByFullname(fullname);
 	}
 
+	@Override
+	public Boolean checkEmail(String email) {
+		return userDao.checkEmail(email);
+	}
+
 }

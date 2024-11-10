@@ -124,4 +124,10 @@ public class UserDao implements IUserDao {
 	    }
 	}
 
+	@Override
+	public Boolean checkEmail(String email) {
+		String emailRegex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        return email.matches(emailRegex);
+	}
+
 }
