@@ -4,6 +4,14 @@
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
 
+<%
+    String alertMessage = (String) session.getAttribute("alertMessage");
+    if (alertMessage != null) {
+        out.println("<script>alert('" + alertMessage + "');</script>");
+        session.removeAttribute("alertMessage");
+    }
+%>
+
 <!-- BEGIN CONTENT -->
 <div class="col-md-12 col-sm-12">
 	<div class="content-form-page">

@@ -115,19 +115,39 @@ public class UserDao implements IUserDao {
 		EntityManager enma = JPAConfig.getEntityManager();
 
 		try {
-			String jpql = "SELECT c FROM User c WHERE c.email like :email";
+			String jpql = "SELECT c FROM User c WHERE c.email = :email";
 			TypedQuery<User> query = enma.createQuery(jpql, User.class);
-			query.setParameter("email", "%" + email + "%");
-	        return query.getSingleResult();
-	    } catch (NoResultException e) {
-	        return null; 
-	    }
+			query.setParameter("email", email);
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 	@Override
-	public Boolean checkEmail(String email) {
-		String emailRegex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-        return email.matches(emailRegex);
+	public Boolean checkExistPhone(String phone) {
+		EntityManager em = JPAConfig.getEntityManager();
+
+		try {
+			Long count = (Long) em.createQuery("SELECT COUNT(c) FROM User c WHERE c.phone = :phone")
+					.setParameter("phone", phone).getSingleResult();
+			return count > 0;
+		} catch (NoResultException e) {
+			return false;
+		} finally {
+			if (em.isOpen()) {
+				em.close();
+			}
+		}
+	}
+
+	@Override
+	public Boolean checkCode(String email, String code) {
+		User user = findByEmail(email);
+		if (user.getCode().equals(code)) {
+			return true;
+		}
+		return false;
 	}
 
 }

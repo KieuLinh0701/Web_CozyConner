@@ -16,14 +16,36 @@
 					method="post" class="form-horizontal" role="form"
 					onsubmit="return validateForm()">
 					<fieldset>
-						<legend>Your email</legend>
+						<legend>Your personal details</legend>
 						<div class="form-group">
 							<label for="email" class="col-lg-4 control-label"> Email
 								<span class="require">*</span>
 							</label>
 							<div class="col-lg-8">
 								<input type="text" class="form-control" id="email" name="email">
-								<span id="emailError" class="error-message" style="color:#E02222; font-size:12px; font-style:italic;"></span>
+								<span id="emailError" class="error-message"
+									style="color: #E02222; font-size: 12px; font-style: italic;"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="fullname" class="col-lg-4 control-label">
+								Full Name <span class="require">*</span>
+							</label>
+							<div class="col-lg-8">
+								<input type="text" class="form-control" id="fullname"
+									name="fullname"> <span id="fullnameError"
+									class="error-message"
+									style="color: #E02222; font-size: 12px; font-style: italic;"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="phone" class="col-lg-4 control-label"> Phone
+								Number <span class="require">*</span>
+							</label>
+							<div class="col-lg-8">
+								<input type="text" class="form-control" id="phone" name="phone">
+								<span id="phoneError" class="error-message"
+									style="color: #E02222; font-size: 12px; font-style: italic;"></span>
 							</div>
 						</div>
 					</fieldset>
@@ -34,8 +56,10 @@
 								<span class="require">*</span>
 							</label>
 							<div class="col-lg-8">
-								<input type="password" class="form-control" id="password" name="password">
-								<span id="passwordError" class="password-message" style="color:#E02222; font-size:12px; font-style:italic;"></span>
+								<input type="password" class="form-control" id="password"
+									name="password"> <span id="passwordError"
+									class="error-message"
+									style="color: #E02222; font-size: 12px; font-style: italic;"></span>
 							</div>
 						</div>
 						<div class="form-group">
@@ -44,8 +68,9 @@
 							</label>
 							<div class="col-lg-8">
 								<input type="password" class="form-control" id="confirmPassword"
-									name="confirmPassword">
-								<span id="confirmPasswordError" class="confirmPassword-message" style="color:#E02222; font-size:12px; font-style:italic;"></span>
+									name="confirmPassword"> <span id="confirmPasswordError"
+									class="error-message"
+									style="color: #E02222; font-size: 12px; font-style: italic;"></span>
 							</div>
 						</div>
 					</fieldset>
@@ -77,34 +102,52 @@
 
 <script>
 	function validateForm() {
+		const fullname = document.getElementById("fullname").value;
 		const email = document.getElementById("email").value;
+		const phone = document.getElementById("phone").value;
 		const password = document.getElementById("password").value;
 		const confirmPassword = document.getElementById("confirmPassword").value;
 
 		let hasError = false;
-		
+
+		//Kiểm tra fullname
+		if (fullname === "") {
+			document.getElementById("fullnameError").textContent = "Please enter your full name!";
+			hasError = true;
+		} else {
+			document.getElementById("fullnameError").textContent = "";
+		}
+
 		//Kiểm tra email
 		if (email === "") {
 			document.getElementById("emailError").textContent = "Please enter your email address!";
 			hasError = true;
 		} else if (!validateEmail(email)) {
-		    document.getElementById("emailError").textContent = "Email address is not valid!";
-		    hasError = true;
+			document.getElementById("emailError").textContent = "Email address is not valid!";
+			hasError = true;
 		} else {
-			document.getElementById("emailError").textContent   = "";
+			document.getElementById("emailError").textContent = "";
 		}
-		
+
+		//Kiểm tra phone number
+		if (phone === "") {
+			document.getElementById("phoneError").textContent = "Please enter your phone number!";
+			hasError = true;
+		} else {
+			document.getElementById("phoneError").textContent = "";
+		}
+
 		//Kiểm tra password
 		if (password === "") {
 			document.getElementById("passwordError").textContent = "Please enter your password!";
 			hasError = true;
 		} else if (!validatePasswordStrength(password)) {
-		    document.getElementById("passwordError").textContent = "The password must be a minimum of 8 characters with a combination of upper and lower case letters, numbers, and special characters (@$!%*?_&)!";
-		    hasError = true;
+			document.getElementById("passwordError").textContent = "The password must be a minimum of 8 characters with a combination of upper and lower case letters, numbers, and special characters (@$!%*?_&)!";
+			hasError = true;
 		} else {
 			document.getElementById("passwordError").textContent = "";
 		}
-		
+
 		//Kiểm tra confirmPassword
 		if (confirmPassword === "") {
 			document.getElementById("confirmPasswordError").textContent = "Please confirm your password!";
@@ -117,13 +160,13 @@
 		}
 		return !hasError;
 	}
-	
+
 	//function về định dạng của email
 	function validateEmail(email) {
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		return emailRegex.test(email);
 	}
-	
+
 	//function về định dạng của password
 	function validatePasswordStrength(password) {
 		const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?_&])[A-Za-z\d@$!%*?_&]{8,}$/;

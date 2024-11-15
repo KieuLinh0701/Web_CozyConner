@@ -62,8 +62,13 @@ public class UserService implements IUserService{
 	}
 
 	@Override
-	public Boolean checkEmail(String email) {
-		return userDao.checkEmail(email);
+	public Boolean checkExistPhone(String phone) {
+		return userDao.checkExistPhone(phone);
+	}
+
+	@Override
+	public Boolean checkCode(String email, String code) {
+		return userDao.checkCode(email, code);
 	}
 
 }

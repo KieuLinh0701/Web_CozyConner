@@ -24,5 +24,7 @@ public interface IUserService {
 
 	void insert(User user);
 	
-	Boolean checkEmail(String email);
+	Boolean checkExistPhone(String phone);
+	
+	Boolean checkCode(String email, String code);
 }

@@ -52,6 +52,10 @@ public class LoginController extends HttpServlet {
 		if (user != null && user.getPassword().equals(password)) {
 			HttpSession session = req.getSession(true);
 			session.setAttribute("account", user);
+			if (user.getStatus()!=1) {
+				resp.sendRedirect(req.getContextPath() + "/verifycode");
+				return;
+			}
 			if (isRememberMe) {
 				saveRemeberMe(resp, email);
 			}
@@ -59,7 +63,7 @@ public class LoginController extends HttpServlet {
 		} else {
 			alertMsg = "Please check your username and password and try again";
 			req.setAttribute("alert", alertMsg);
-			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+			req.getRequestDispatcher(Constant.LOGIN).forward(req, resp);
 		}
 	}
 

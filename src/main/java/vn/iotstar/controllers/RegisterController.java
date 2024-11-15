@@ -1,14 +1,21 @@
 package vn.iotstar.controllers;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import vn.iotstar.dao.implement.SendMail;
+import vn.iotstar.entity.Role;
 import vn.iotstar.entity.User;
+import vn.iotstar.services.IRoleService;
 import vn.iotstar.services.IUserService;
+import vn.iotstar.services.implement.RoleService;
 import vn.iotstar.services.implement.UserService;
 import vn.iotstar.utils.Constant;
 
@@ -26,13 +33,47 @@ public class RegisterController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String url = req.getRequestURI();
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		String email = req.getParameter("email");
+		String fullname = req.getParameter("fullname");
+		String phone = req.getParameter("phone");
 		String password = req.getParameter("password");
-		String confirmPassword = req.getParameter("confirmPassword");
 		
+		User user = userService.findByEmail(email);
 		
+		String alertMsg = "";
+		if (user == null) {
+			if (userService.checkExistPhone(phone)) {
+				alertMsg = "For security reasons, this phone number has been linked to another account. Please provide a unique phone number to proceed with registration!";
+				req.setAttribute("alert", alertMsg);
+				req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
+				return;
+			}
+			
+			SendMail sm = new SendMail();
+			String code = sm.getRandom();
+			IRoleService roleService = new RoleService();
+			User userRegister = new User(fullname, email, code, password, phone, 0, LocalDateTime.now(), roleService.findById(2));
+			userService.insert(userRegister);
+			HttpSession session = req.getSession();
+			session.setAttribute("account", userRegister);
+			boolean test = sm.SendEmail(userRegister);
+			
+			if (test) {
+				resp.sendRedirect(req.getContextPath() + "/verifycode");
+			} else {
+				alertMsg = "There was an error while sending the email!";
+				req.setAttribute("alert", alertMsg);
+				req.setAttribute("fullname", fullname);
+				req.setAttribute("email", email);
+				req.setAttribute("phone", phone);
+				req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
+			}
+		}	else {
+			alertMsg = "For security reasons, this email address has been linked to another account. Please provide a unique email address to proceed with registration!";
+			req.setAttribute("alert", alertMsg);
+			req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
+		}
 	}
 }

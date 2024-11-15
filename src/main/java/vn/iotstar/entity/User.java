@@ -28,12 +28,6 @@ public class User implements Serializable{
 	@Column(name = "fullname", columnDefinition = "NVARCHAR(50) NULL")
 	private String fullname;
 
-	@Column(name = "gender", columnDefinition = "NVARCHAR(10) NULL")
-	private String gender;
-
-	@Column(name = "birthday")
-	private LocalDateTime birthday;
-
 	@Column(name = "email", columnDefinition = "NVARCHAR(50) NOT NULL")
 	private String email;
 	
@@ -52,7 +46,7 @@ public class User implements Serializable{
 	@Column(name = "status")
 	private int status;
 
-	@Column(name = "creatDate")
+	@Column(name = "createDate")
 	private LocalDateTime createDate;
 
 	// bi-directional many-to-one association to Category
@@ -64,6 +58,19 @@ public class User implements Serializable{
 	public User() {
 	}
 	
+	public User(String fullname, String email, String code, String password,
+			String phone, int status, LocalDateTime createDate, Role role) {
+		super();
+		this.fullname = fullname;
+		this.email = email;
+		this.code = code;
+		this.password = password;
+		this.phone = phone;
+		this.status = status;
+		this.createDate = createDate;
+		this.role = role;
+	}
+
 	public int getStatus() {
 		return status;
 	}
@@ -94,22 +101,6 @@ public class User implements Serializable{
 
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public LocalDateTime getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(LocalDateTime birthday) {
-		this.birthday = birthday;
 	}
 
 	public String getEmail() {
