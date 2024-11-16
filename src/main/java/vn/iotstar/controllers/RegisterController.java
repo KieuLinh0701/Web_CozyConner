@@ -61,7 +61,7 @@ public class RegisterController extends HttpServlet{
 			boolean test = sm.SendEmail(userRegister);
 			
 			if (test) {
-				resp.sendRedirect(req.getContextPath() + "/verifycode");
+				resp.sendRedirect(req.getContextPath() + "/verifycodeaccount");
 			} else {
 				alertMsg = "There was an error while sending the email!";
 				req.setAttribute("alert", alertMsg);

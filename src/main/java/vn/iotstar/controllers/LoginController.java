@@ -53,7 +53,9 @@ public class LoginController extends HttpServlet {
 			HttpSession session = req.getSession(true);
 			session.setAttribute("account", user);
 			if (user.getStatus()!=1) {
-				resp.sendRedirect(req.getContextPath() + "/verifycode");
+				session = req.getSession();
+				session.setAttribute("alertMessage", "Your account is waiting to be activated. Activate it now to get started!");
+				resp.sendRedirect(req.getContextPath() + "/verifycodeaccount");
 				return;
 			}
 			if (isRememberMe) {
@@ -63,6 +65,7 @@ public class LoginController extends HttpServlet {
 		} else {
 			alertMsg = "Please check your username and password and try again";
 			req.setAttribute("alert", alertMsg);
+			req.setAttribute("email", email);
 			req.getRequestDispatcher(Constant.LOGIN).forward(req, resp);
 		}
 	}

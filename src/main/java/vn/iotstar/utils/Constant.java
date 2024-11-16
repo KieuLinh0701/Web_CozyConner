@@ -13,7 +13,10 @@ public class Constant {
 	public static final String ADMIN_HOME = "/views/admin/home.jsp";
 	public static final String REGISTER = "/views/register.jsp";
 	public static final String LOGIN = "/views/login.jsp";
-	public static final String VERIFY_CODE = "/views/verifyCode.jsp";
+	public static final String VERIFY_CODE_ACCOUNT = "/views/verifyCodeAccount.jsp";
+	public static final String VERIFY_CODE_PASSWORD = "/views/verifyCodePassword.jsp";
+	public static final String FORGOT_PASSWORD = "/views/forgotPassword.jsp";
+	public static final String CREATE_PASSWORD = "/views/createPassword.jsp";
 	
 	
 	public static final String UPLOAD_DIRECTORY = "C:\\upload";

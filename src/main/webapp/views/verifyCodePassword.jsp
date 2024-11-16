@@ -10,7 +10,7 @@
 	<div class="content-form-page">
 		<div class="row">
 			<div class="col-md-7 col-sm-7">
-				<form action="${pageContext.request.contextPath}/verifycode"
+				<form action="${pageContext.request.contextPath}/verifycodepassword"
 					method="post" class="form-horizontal form-without-legend"
 					role="form" onsubmit="return validateForm()">
 					<div class="form-group">
@@ -31,7 +31,7 @@
 							<div
 								class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
 								<button type="submit" class="btn btn-primary"
-									style="background-color: black">Activate account</button>
+									style="background-color: black">Verify code</button>
 							</div>
 						</div>
 				</form>
