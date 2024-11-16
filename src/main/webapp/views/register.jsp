@@ -61,7 +61,9 @@
 									class="error-message"
 									style="color: #E02222; font-size: 12px; font-style: italic;"></span>
 							</div>
+							<i class="fa fa-eye" id="togglePassword1"></i>
 						</div>
+
 						<div class="form-group">
 							<label for="confirmPassword" class="col-lg-4 control-label">Confirm
 								password <span class="require">*</span>
@@ -72,6 +74,7 @@
 									class="error-message"
 									style="color: #E02222; font-size: 12px; font-style: italic;"></span>
 							</div>
+							<i class="fa fa-eye" id="togglePassword2"></i>
 						</div>
 					</fieldset>
 
@@ -101,6 +104,37 @@
 
 
 <script>
+	const password = document.getElementById('password');
+	const togglePassword1 = document.getElementById('togglePassword1');
+	const confirmPassword = document.getElementById("confirmPassword");
+	const togglePassword2 = document.getElementById('togglePassword2');
+
+	togglePassword1.addEventListener('click', function() {
+		if (password.type === 'password') {
+			password.type = 'text';
+			togglePassword1.classList.remove('fa-eye');
+			togglePassword1.classList.add('fa-eye-slash');
+		} else {
+			password.type = 'password';
+			togglePassword1.classList.remove('fa-eye-slash');
+			togglePassword1.classList.add('fa-eye');
+
+		}
+	});
+
+	togglePassword2.addEventListener('click', function() {
+		if (confirmPassword.type === 'password') {
+			confirmPassword.type = 'text';
+			togglePassword2.classList.remove('fa-eye');
+			togglePassword2.classList.add('fa-eye-slash');
+		} else {
+			confirmPassword.type = 'password';
+			togglePassword2.classList.remove('fa-eye-slash');
+			togglePassword2.classList.add('fa-eye');
+
+		}
+	});
+
 	function validateForm() {
 		const fullname = document.getElementById("fullname").value;
 		const email = document.getElementById("email").value;
