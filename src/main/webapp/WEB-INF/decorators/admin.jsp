@@ -69,7 +69,7 @@
 	rel="stylesheet">
 <link href="${URL}assets/frontend/layout/css/style-responsive.css"
 	rel="stylesheet">
-<link href="${URL}assets/frontend/layout/css/themes/red.css"
+<link href="${URL}assets/frontend/layout/css/themes/gray.css"
 	rel="stylesheet" id="style-color">
 <link href="${URL}assets/frontend/layout/css/custom.css"
 	rel="stylesheet">
