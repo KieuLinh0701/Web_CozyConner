@@ -38,7 +38,7 @@
 <div class="header">
 	<div class="container">
 		<a class="site-logo" href="shop-index.html"><img
-			src="${URL}assets/frontend/layout/img/logos/logo.png"
+			src="${URL}assets/frontend/layout/img/logos/logo7.png"
 			alt="Furniture Shop UI"></a> <a href="javascript:void(0);"
 			class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
