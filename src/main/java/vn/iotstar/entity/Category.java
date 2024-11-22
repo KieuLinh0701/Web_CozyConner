@@ -13,35 +13,35 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "roles")
-@NamedQuery(name = "Role.findAll", query = "SELECT c FROM Role c")
-public class Role implements Serializable{
+@Table(name = "categories")
+@NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c")
+public class Category implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "category_id")
+	private int category_id;
 
 	@Column(name = "name", columnDefinition = "NVARCHAR(255) NULL")
 	private String name;
 	
 	// bi-directional many-to-one association to Video
-	@OneToMany(mappedBy = "role")
+	@OneToMany(mappedBy = "category")
 
 
-	private List<User> users;
+	private List<Product> products;
 
-	public Role() {
+	public Category() {
 	}
 
-	public int getId() {
-		return id;
+	public int getCategory_id() {
+		return category_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCategory_id(int category_id) {
+		this.category_id = category_id;
 	}
 
 	public String getName() {
@@ -52,11 +52,11 @@ public class Role implements Serializable{
 		this.name = name;
 	}
 
-	public List<User> getUsers() {
-		return this.users;
+	public List<Product> getProducts() {
+		return products;
 	}
-	
-	public void setUsers(List<User> users) {
-		this.users = users;
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 }
