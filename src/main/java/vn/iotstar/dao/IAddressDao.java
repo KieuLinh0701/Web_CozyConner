@@ -7,7 +7,7 @@ public interface IAddressDao {
 	
 	Address findByAddressId(int id);
 	
-	Address update(Address address);
+	void update(Address address);
 	
 	Address insert(Address address);
 

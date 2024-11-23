@@ -20,14 +20,13 @@ public class AddressDao implements IAddressDao{
 	}
 
 	@Override
-	public Address update(Address address) {
+	public void update(Address address) {
 		EntityManager enma = JPAConfig.getEntityManager();
 		EntityTransaction trans = enma.getTransaction();
 		try {
 			trans.begin();
-			Address newAddress = enma.merge(address);
+			enma.merge(address);
 			trans.commit();
-			return newAddress;
 		} catch (Exception e) {
 			e.printStackTrace();
 			trans.rollback();

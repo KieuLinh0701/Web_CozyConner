@@ -15,8 +15,8 @@ public class AddressService implements IAddressService{
 	}
 
 	@Override
-	public Address update(Address address) {
-		return addressDao.update(address);
+	public void update(Address address) {
+		addressDao.update(address);
 	}
 
 	@Override
