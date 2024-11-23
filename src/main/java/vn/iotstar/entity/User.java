@@ -55,6 +55,10 @@ public class User implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "roleId")
 	private Role role;
+	
+	@OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id", nullable = false)
+	private Address address;
 
 	public User() {
 	}
@@ -70,6 +74,14 @@ public class User implements Serializable{
 		this.status = status;
 		this.createDate = createDate;
 		this.role = role;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public int getStatus() {

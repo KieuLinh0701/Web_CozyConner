@@ -3,6 +3,7 @@ package vn.iotstar.controllers;
 import java.io.IOException;
 import java.util.List;
 
+import jakarta.mail.Address;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -29,18 +30,10 @@ public class CheckoutController extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		
 		if (url.contains("checkout")) {
-//			HttpSession session = req.getSession();
-//			User user = (User) session.getAttribute("account");
-//			
-//			if (user == null) {
-//				req.setAttribute("alert", "To access your shopping cart, please log in to your account!");
-//			} else {
-//				List<Cart> listCart = cartService.findByUser(user.getId());
-//				if (listCart.size() == 0) {
-//					req.setAttribute("alert", "Your shopping cart is currently empty. Start shopping now!");
-//				} 
-//	            req.setAttribute("listCart", listCart);
-//			}
+			HttpSession session = req.getSession();
+			User user = (User) session.getAttribute("account");
+			req.setAttribute("user", user);
+			//Address address = findByAddressId(user.getAddress().getAddress_id());
 			req.getRequestDispatcher(Constant.CHECKOUT).forward(req, resp);
 		}
 		
