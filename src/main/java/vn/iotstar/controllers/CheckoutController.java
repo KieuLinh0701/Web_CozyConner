@@ -3,16 +3,18 @@ package vn.iotstar.controllers;
 import java.io.IOException;
 import java.util.List;
 
-import jakarta.mail.Address;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import vn.iotstar.entity.Address;
 import vn.iotstar.entity.Cart;
 import vn.iotstar.entity.User;
+import vn.iotstar.services.IAddressService;
 import vn.iotstar.services.ICartService;
+import vn.iotstar.services.implement.AddressService;
 import vn.iotstar.services.implement.CartService;
 import vn.iotstar.utils.Constant;
 
@@ -33,7 +35,10 @@ public class CheckoutController extends HttpServlet {
 			HttpSession session = req.getSession();
 			User user = (User) session.getAttribute("account");
 			req.setAttribute("user", user);
-			//Address address = findByAddressId(user.getAddress().getAddress_id());
+			
+			IAddressService addressService = new AddressService();
+			Address address = addressService.findByAddressId(user.getAddress().getAddress_id());
+			req.setAttribute("address", address);
 			req.getRequestDispatcher(Constant.CHECKOUT).forward(req, resp);
 		}
 		
