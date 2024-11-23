@@ -63,7 +63,7 @@ public class RegisterController extends HttpServlet{
 			
 			IAddressService addressService = new AddressService();
 			Address address = new Address(city, district, ward, detail);
-			Address newAddress = addressService.update(address);
+			Address newAddress = addressService.insert(address);
 					
 			IRoleService roleService = new RoleService();
 			User userRegister = new User(fullname, email, code, password, phone, 0, LocalDateTime.now(), roleService.findById(2), newAddress);

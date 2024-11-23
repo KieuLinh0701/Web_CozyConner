@@ -18,6 +18,11 @@ public class AddressService implements IAddressService{
 	public Address update(Address address) {
 		return addressDao.update(address);
 	}
+
+	@Override
+	public Address insert(Address address) {
+		return addressDao.insert(address);
+	}
 	
 
 }

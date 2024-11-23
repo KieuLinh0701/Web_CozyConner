@@ -51,9 +51,9 @@
 														class="form-control input-sm">
 												</div>
 											</td>
-											<td class="goods-page-price"><strong><span>$</span>${cart.product.price}</strong>
+											<td class="goods-page-price"><strong>${cart.product.price}</strong>
 											</td>
-											<td class="goods-page-total"><strong><span>$</span>${cart.product.price * cart.quantity}</strong>
+											<td class="goods-page-total"><strong>${cart.product.price * cart.quantity}</strong>
 											</td>
 											<td class="del-goods-col"><a class="del-goods" href="${pageContext.request.contextPath}/cart/delete?=userid${cart.user.id}&&productid=${cart.product.product_id}">&nbsp;</a>
 											</td>
@@ -64,12 +64,8 @@
 
 							<div class="shopping-total">
 								<ul>
-									<li><em>Sub total</em> <strong class="price"><span>$</span>47.00</strong>
+									<li><em>Total</em> <strong class="price">${total }</strong>
 									</li>
-									<li><em>Shipping cost</em> <strong class="price"><span>$</span>3.00</strong>
-									</li>
-									<li class="shopping-total-price"><em>Total</em> <strong
-										class="price"><span>$</span>50.00</strong></li>
 								</ul>
 							</div>
 						</div>

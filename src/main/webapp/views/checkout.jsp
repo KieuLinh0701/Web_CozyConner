@@ -133,6 +133,7 @@
 																</c:if> <img src="${imgUrl}" alt="${payment.name}"
 																style="height: 40px; width: 40px; margin-left: 50px;"></td>
 															<td>${payment.name}</td>
+															<td><input type="radio" name="standardExpress" value="standardExpress" style="float:right;"></td>
 														</tr>
 													</c:if>
 												</c:forEach>

@@ -9,4 +9,6 @@ public interface IAddressService {
 	
 	Address update(Address address);
 	
+	Address insert(Address address);
+	
 }

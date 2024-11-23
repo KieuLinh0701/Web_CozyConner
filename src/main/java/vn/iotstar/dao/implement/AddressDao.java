@@ -37,4 +37,23 @@ public class AddressDao implements IAddressDao{
 		}
 	}
 
+	@Override
+	public Address insert(Address address) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		EntityTransaction trans = enma.getTransaction();
+		try {
+			trans.begin();
+			enma.persist(address);
+			Address newAddress = enma.merge(address);
+			trans.commit();
+			return newAddress;
+		} catch (Exception e) {
+			e.printStackTrace();
+			trans.rollback();
+			throw e;
+		} finally {
+			enma.close();
+		}
+	}
+
 }

@@ -40,6 +40,11 @@ public class CartController extends HttpServlet {
 					req.setAttribute("alert", "Your shopping cart is currently empty. Start shopping now!");
 				} 
 	            req.setAttribute("listCart", listCart);
+	            int total = 0;
+				for (Cart x : listCart) {
+					 total = total + x.getQuantity()*x.getProduct().getPrice();
+				}
+				req.setAttribute("total", total);
 			}
 			req.getRequestDispatcher(Constant.CART).forward(req, resp);
 		}
