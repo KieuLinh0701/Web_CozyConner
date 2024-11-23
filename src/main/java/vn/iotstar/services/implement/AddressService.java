@@ -13,6 +13,16 @@ public class AddressService implements IAddressService{
 	public Address findByAddressId(int id) {
 		return addressDao.findByAddressId(id);
 	}
+
+	@Override
+	public Address update(Address address) {
+		return addressDao.update(address);
+	}
+
+	@Override
+	public Address insert(Address address) {
+		return addressDao.insert(address);
+	}
 	
 
 }

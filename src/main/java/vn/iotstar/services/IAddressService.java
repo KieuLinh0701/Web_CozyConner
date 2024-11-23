@@ -7,4 +7,8 @@ public interface IAddressService {
 
 	Address findByAddressId(int id);
 	
+	Address update(Address address);
+	
+	Address insert(Address address);
+	
 }

@@ -50,6 +50,51 @@
 						</div>
 					</fieldset>
 					<fieldset>
+						<legend>Your address</legend>
+						<div class="form-group">
+							<label for="city" class="col-lg-4 control-label"> City <span
+								class="require">*</span>
+							</label>
+							<div class="col-lg-8">
+								<input type="text" class="form-control" id="city" name="city">
+								<span id="cityError" class="error-message"
+									style="color: #E02222; font-size: 12px; font-style: italic;"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="district" class="col-lg-4 control-label">
+								District <span class="require">*</span>
+							</label>
+							<div class="col-lg-8">
+								<input type="text" class="form-control" id="district"
+									name="district"> <span id="districtError"
+									class="error-message"
+									style="color: #E02222; font-size: 12px; font-style: italic;"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="ward" class="col-lg-4 control-label"> Ward <span
+								class="require">*</span>
+							</label>
+							<div class="col-lg-8">
+								<input type="text" class="form-control" id="ward" name="ward">
+								<span id="wardError" class="error-message"
+									style="color: #E02222; font-size: 12px; font-style: italic;"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="detail" class="col-lg-4 control-label">
+								Detail <span class="require">*</span>
+							</label>
+							<div class="col-lg-8">
+								<input type="text" class="form-control" id="detail"
+									name="detail"> <span id="detailError"
+									class="error-message"
+									style="color: #E02222; font-size: 12px; font-style: italic;"></span>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
 						<legend>Your password</legend>
 						<div class="form-group">
 							<label for="password" class="col-lg-4 control-label">Password
@@ -141,8 +186,44 @@
 		const phone = document.getElementById("phone").value;
 		const password = document.getElementById("password").value;
 		const confirmPassword = document.getElementById("confirmPassword").value;
+		const city = document.getElementById("city").value;
+		const district = document.getElementById("district").value;
+		const ward = document.getElementById("ward").value;
+		const detail = document.getElementById("detail").value;
 
 		let hasError = false;
+
+		//Kiểm tra city
+		if (city === "") {
+			document.getElementById("cityError").textContent = "Please enter your city!";
+			hasError = true;
+		} else {
+			document.getElementById("cityError").textContent = "";
+		}
+
+		//Kiểm tra district
+		if (district === "") {
+			document.getElementById("districtError").textContent = "Please enter your district!";
+			hasError = true;
+		} else {
+			document.getElementById("districtError").textContent = "";
+		}
+
+		//Kiểm tra ward
+		if (ward === "") {
+			document.getElementById("wardError").textContent = "Please enter your ward!";
+			hasError = true;
+		} else {
+			document.getElementById("wardError").textContent = "";
+		}
+
+		//Kiểm tra detail
+		if (detail === "") {
+			document.getElementById("detailError").textContent = "Please enter your detail!";
+			hasError = true;
+		} else {
+			document.getElementById("detailError").textContent = "";
+		}
 
 		//Kiểm tra fullname
 		if (fullname === "") {

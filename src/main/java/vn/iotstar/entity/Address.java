@@ -37,6 +37,13 @@ public class Address implements Serializable{
 	public Address() {
 	}
 
+	public Address(String city, String district, String ward, String detail) {
+		this.city = city;
+		this.district = district;
+		this.ward = ward;
+		this.detail = detail;
+	}
+
 	public int getAddress_id() {
 		return address_id;
 	}
