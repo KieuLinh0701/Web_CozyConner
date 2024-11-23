@@ -40,9 +40,10 @@
 													</c:if> <img src="${imgUrl}" alt="${cart.product.name}">
 											</a></td>
 											<td class="goods-page-description">
-												<p>Material: ${cart.product.material} Color:
-													${cart.product.color} Height: ${cart.product.height} -
-													Length: ${cart.product.length} - Width:
+												<p>Material: ${cart.product.material}</p>
+												<p>Color: ${cart.product.color}</p>
+												<p>Size: height: ${cart.product.height} -
+													length: ${cart.product.length} - width:
 													${cart.product.width}</p>
 											</td>
 											<td class="goods-page-quantity">
@@ -74,7 +75,7 @@
 								</ul>
 							</div>
 						</div>
-						<button class="btn btn-default" type="submit">
+						<button class="btn btn-default" onclick="continueShopping()">
 							Continue shopping <i class="fa fa-shopping-cart"></i>
 						</button>
 						<button class="btn btn-primary" type="submit">
@@ -88,3 +89,9 @@
 		<!-- END SIDEBAR & CONTENT -->
 	</div>
 </div>
+
+<script>
+    function continueShopping() {
+        window.location.href = '${pageContext.request.contextPath}/#'; // Chuyển hướng đến trang product
+    }
+</script>
