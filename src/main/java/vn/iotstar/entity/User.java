@@ -64,7 +64,7 @@ public class User implements Serializable{
 	}
 	
 	public User(String fullname, String email, String code, String password,
-			String phone, int status, LocalDateTime createDate, Role role) {
+			String phone, int status, LocalDateTime createDate, Role role, Address address) {
 		super();
 		this.fullname = fullname;
 		this.email = email;
@@ -74,6 +74,7 @@ public class User implements Serializable{
 		this.status = status;
 		this.createDate = createDate;
 		this.role = role;
+		this.address = address;
 	}
 
 	public Address getAddress() {

@@ -2,6 +2,7 @@ package vn.iotstar.dao.implement;
 
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import vn.iotstar.configs.JPAConfig;
 import vn.iotstar.dao.IAddressDao;
@@ -16,6 +17,24 @@ public class AddressDao implements IAddressDao{
         TypedQuery<Address> query = enma.createQuery(jpql, Address.class);
         query.setParameter("id", id);
         return query.getSingleResult();
+	}
+
+	@Override
+	public Address update(Address address) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		EntityTransaction trans = enma.getTransaction();
+		try {
+			trans.begin();
+			Address newAddress = enma.merge(address);
+			trans.commit();
+			return newAddress;
+		} catch (Exception e) {
+			e.printStackTrace();
+			trans.rollback();
+			throw e;
+		} finally {
+			enma.close();
+		}
 	}
 
 }

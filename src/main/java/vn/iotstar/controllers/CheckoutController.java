@@ -42,6 +42,15 @@ public class CheckoutController extends HttpServlet {
 			IPaymentService paymentService = new PaymentService();
 			List<PaymentMethod> listPayment = paymentService.findAll();
 			req.setAttribute("listPayment", listPayment);
+			
+			ICartService cartService = new CartService();
+			List<Cart> listCart = cartService.findByUser(user.getId());
+			req.setAttribute("listCart", listCart);
+			int total = 0;
+			for (Cart x : listCart) {
+				 total = total + x.getQuantity()*x.getProduct().getPrice();
+			}
+			req.setAttribute("total", total);
 			req.getRequestDispatcher(Constant.CHECKOUT).forward(req, resp);
 		}
 		
