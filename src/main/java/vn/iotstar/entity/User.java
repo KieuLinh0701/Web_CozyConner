@@ -3,6 +3,7 @@ package vn.iotstar.entity;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -52,8 +54,11 @@ public class User implements Serializable{
 	// bi-directional many-to-one association to Category
 	@ManyToOne
 	@JoinColumn(name = "roleId")
-
 	private Role role;
+	
+	@OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id", nullable = false)
+	private Address address;
 
 	public User() {
 	}
@@ -69,6 +74,14 @@ public class User implements Serializable{
 		this.status = status;
 		this.createDate = createDate;
 		this.role = role;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public int getStatus() {
