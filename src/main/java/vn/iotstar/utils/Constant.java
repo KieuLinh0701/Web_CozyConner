@@ -18,7 +18,7 @@ public class Constant {
 	public static final String FORGOT_PASSWORD = "/views/forgotPassword.jsp";
 	public static final String CREATE_PASSWORD = "/views/createPassword.jsp";
 	public static final String CART = "/views/cart.jsp";
-	
+	public static final String CHECKOUT = "/views/checkout.jsp";
 	
 	public static final String UPLOAD_DIRECTORY = "C:\\upload";
 	public static final String DEFAULT_FILENAME = "default.file";

@@ -4,8 +4,6 @@
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
 
-
-
 <div class="main">
 	<div class="container">
 		<!-- BEGIN SIDEBAR & CONTENT -->
@@ -55,9 +53,9 @@
 											</td>
 											<td class="goods-page-price"><strong><span>$</span>${cart.product.price}</strong>
 											</td>
-											<td class="goods-page-total"><strong><span>$</span>${cart.product.price}*${cart.quantity}</strong>
+											<td class="goods-page-total"><strong><span>$</span>${cart.product.price * cart.quantity}</strong>
 											</td>
-											<td class="del-goods-col"><a class="del-goods" href="#">&nbsp;</a>
+											<td class="del-goods-col"><a class="del-goods" href="${pageContext.request.contextPath}/cart/delete?=userid${cart.user.id}&&productid=${cart.product.product_id}">&nbsp;</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -75,10 +73,13 @@
 								</ul>
 							</div>
 						</div>
-						<button class="btn btn-default" onclick="continueShopping()">
+						<button class="btn btn-default" onclick="continueShopping()" style="background:black; border:black;">
 							Continue shopping <i class="fa fa-shopping-cart"></i>
 						</button>
-						<button class="btn btn-primary" type="submit">
+						<button class="btn btn-default" onclick="continueShopping()" style="margin-left: 15px; background:black; border:black;">
+							Delete cart <i class="fa fa-shopping-cart"></i>
+						</button>
+						<button class="btn btn-primary" onclick="checkout()" style="background:black; border:black;">
 							Checkout <i class="fa fa-check"></i>
 						</button>
 					</div>
@@ -93,5 +94,8 @@
 <script>
     function continueShopping() {
         window.location.href = '${pageContext.request.contextPath}/#'; // Chuyển hướng đến trang product
+    }
+    function checkout() {
+        window.location.href = '${pageContext.request.contextPath}/checkout'; // Chuyển hướng đến trang thanh toán
     }
 </script>
