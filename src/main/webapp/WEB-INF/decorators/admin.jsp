@@ -81,7 +81,7 @@
 <body class="ecommerce">
 
 	<!-- BEGIN HEADER -->
-	<%@ include file="/commons/web/header.jsp"%>
+	<%@ include file="/commons/web/admin/header.jsp"%>
 	<!-- END HEADER -->
 
 	<div class="main">
