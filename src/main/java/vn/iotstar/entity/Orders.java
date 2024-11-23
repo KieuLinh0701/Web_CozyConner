@@ -17,19 +17,11 @@ import jakarta.persistence.Table;
 @Table(name="orders")
 @NamedQuery(name="Orders.findAll", query="SELECT ord FROM Orders ord")
 public class Orders implements Serializable {
-	/**
-	 * 
-	 */
+
+	
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
-	
 
-	/**
-	 * 
-	 */
 
 	public Orders() {
 	}
@@ -86,15 +78,6 @@ public class Orders implements Serializable {
 		this.note = note;
 	}
 
-	
-	
-	/*
-	 * @OneToMany(mappedBy="category") là một annotation trong Hibernate và JPA
-	 * (Java Persistence API) được sử dụng để thiết lập mối quan hệ một-nhiều giữa
-	 * hai thực thể. Trong trường hợp này, nó chỉ định rằng một thực thể Category có
-	 * thể liên kết với nhiều thực thể Video.
-	 */
-	/* Quản lý các Video thuộc về một danh mục cụ thể */
 	
 	
 	
