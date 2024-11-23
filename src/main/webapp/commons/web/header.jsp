@@ -45,7 +45,7 @@
 		<!-- BEGIN CART -->
 		<div class="top-cart-block">
 			<div class="top-cart-info">
-				<a href="javascript:void(0);" class="top-cart-info-count">n
+				<a href="${pageContext.request.contextPath}/cart" class="top-cart-info-count">0
 					items</a>
 			</div>
 			<i class="fa fa-shopping-cart" style="background-color: black"></i>
@@ -62,7 +62,7 @@
 						</a></li>
 					</ul>
 					<div class="text-right">
-						<a href="shop-shopping-cart.html" class="btn btn-default"
+						<a href="${pageContext.request.contextPath}/cart" class="btn btn-default"
 							style="background-color: black">View Cart</a> <a
 							href="shop-checkout.html" class="btn btn-primary"
 							style="background-color: black">Checkout</a>
