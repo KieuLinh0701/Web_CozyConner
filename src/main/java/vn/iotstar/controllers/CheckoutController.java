@@ -11,11 +11,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.iotstar.entity.Address;
 import vn.iotstar.entity.Cart;
+import vn.iotstar.entity.PaymentMethod;
 import vn.iotstar.entity.User;
 import vn.iotstar.services.IAddressService;
 import vn.iotstar.services.ICartService;
+import vn.iotstar.services.IPaymentService;
 import vn.iotstar.services.implement.AddressService;
 import vn.iotstar.services.implement.CartService;
+import vn.iotstar.services.implement.PaymentService;
 import vn.iotstar.utils.Constant;
 
 @WebServlet(urlPatterns = { "/checkout"})
@@ -36,9 +39,9 @@ public class CheckoutController extends HttpServlet {
 			User user = (User) session.getAttribute("account");
 			req.setAttribute("user", user);
 			
-			IAddressService addressService = new AddressService();
-			Address address = addressService.findByAddressId(user.getAddress().getAddress_id());
-			req.setAttribute("address", address);
+			IPaymentService paymentService = new PaymentService();
+			List<PaymentMethod> listPayment = paymentService.findAll();
+			req.setAttribute("listPayment", listPayment);
 			req.getRequestDispatcher(Constant.CHECKOUT).forward(req, resp);
 		}
 		

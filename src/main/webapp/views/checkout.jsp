@@ -59,9 +59,10 @@
 				<div class="panel-body row">
 					<div class="col-md-12">
 						<h3>Shipping Option</h3>
-						<div class="radio-list">
+						<div class="radio-list" style="margin-left:50px">
 							<label> <input type="radio" name="standardExpress"
-								value="standardExpress" checked disabled> Standard express (free)
+								value="standardExpress" checked disabled> Standard
+								express (free)
 							</label>
 						</div>
 						<div class="form-group">
@@ -76,45 +77,26 @@
 					</div>
 				</div>
 
-				<!-- BEGIN PAYMENT METHOD -->
-				<div id="payment-method" class="panel panel-default">
-					<div class="panel-heading">
-						<h2 class="panel-title">
-							<a data-toggle="collapse" data-parent="#checkout-page"
-								href="#payment-method-content" class="accordion-toggle">
-								Step 5: Payment Method </a>
-						</h2>
-					</div>
-					<div id="payment-method-content" class="panel-collapse collapse">
-						<div class="panel-body row">
-							<div class="col-md-12">
-								<p>Please select the preferred payment method to use on this
-									order.</p>
-								<div class="radio-list">
-									<label> <input type="radio" name="CashOnDelivery"
-										value="CashOnDelivery"> Cash On Delivery
-									</label>
-								</div>
-								<div class="form-group">
-									<label for="delivery-payment-method">Add Comments About
-										Your Order</label>
-									<textarea id="delivery-payment-method" rows="8"
-										class="form-control"></textarea>
-								</div>
-								<button class="btn btn-primary  pull-right" type="submit"
-									id="button-payment-method" data-toggle="collapse"
-									data-parent="#checkout-page" data-target="#confirm-content">Continue</button>
-								<div class="checkbox pull-right">
-									<label> <input type="checkbox"> I have read and
-										agree to the <a title="Terms & Conditions" href="#">Terms
-											& Conditions </a> &nbsp;&nbsp;&nbsp;
-									</label>
-								</div>
-							</div>
-						</div>
+				<div class="panel-body row">
+					<div class="col-md-6 col-sm-6">
+						<h3>Payment Methods</h3>
+						<table summary="Shopping cart">
+							<c:forEach var="payment" items="${listPayment}">
+								<c:if test="${payment.status == 1 }">
+									<tr>
+										<td class="goods-page-image"><c:if
+												test="${payment.image.substring(0,5) != 'https'}">
+												<c:url value="/image?fname=${payment.image}" var="imgUrl"></c:url>
+											</c:if> <c:if test="${payment.image.substring(0,5) == 'https'}">
+												<c:url value="${payment.image}" var="imgUrl"></c:url>
+											</c:if> <img src="${imgUrl}" alt="${payment.name}" style="height: 40px; width: 40px; margin-left: 50px;"></td>
+										<td>${payment.name}</td>
+									</tr>
+								</c:if>
+							</c:forEach>
+						</table>
 					</div>
 				</div>
-				<!-- END PAYMENT METHOD -->
 
 				<!-- BEGIN CONFIRM -->
 				<div id="confirm" class="panel panel-default">
