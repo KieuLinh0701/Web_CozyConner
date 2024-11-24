@@ -1,6 +1,7 @@
-																																																	package vn.iotstar.entity;
+package vn.iotstar.entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,15 +34,23 @@ public class Discount implements Serializable {
     @Column(name = "quantity", columnDefinition = "INT NOT NULL")
     private int quantity;
 
+    @Column(name = "startDate")
+    private Timestamp startDate;
+
+    @Column(name = "endDate")
+    private Timestamp endDate;
+
     public Discount() {
     }
 
-    public Discount(String discountName, int percent, String description, int quantity) {
+    public Discount(String discountName, int percent, String description, int quantity, Timestamp startDate, Timestamp endDate) {
         super();
         this.discountName = discountName;
         this.percent = percent;
         this.description = description;
         this.quantity = quantity;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public int getDiscountId() {
@@ -82,5 +91,21 @@ public class Discount implements Serializable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Timestamp getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
+    }
+
+    public Timestamp getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Timestamp endDate) {
+        this.endDate = endDate;
     }
 }
