@@ -1,6 +1,7 @@
 package vn.iotstar.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,8 +26,8 @@ public class Discount implements Serializable {
     @Column(name = "discountName", columnDefinition = "NVARCHAR(50) NOT NULL")
     private String discountName;
 
-    @Column(name = "percent", columnDefinition = "INT NOT NULL")
-    private int percent;
+    @Column(name = "percentage", precision = 5, scale = 2)
+    private BigDecimal percentage;
 
     @Column(name = "description", columnDefinition = "NVARCHAR(255) NULL")
     private String description;
@@ -43,10 +44,10 @@ public class Discount implements Serializable {
     public Discount() {
     }
 
-    public Discount(String discountName, int percent, String description, int quantity, Timestamp startDate, Timestamp endDate) {
+    public Discount(String discountName, BigDecimal percentage, String description, int quantity, Timestamp startDate, Timestamp endDate) {
         super();
         this.discountName = discountName;
-        this.percent = percent;
+        this.percentage = percentage;
         this.description = description;
         this.quantity = quantity;
         this.startDate = startDate;
@@ -69,12 +70,12 @@ public class Discount implements Serializable {
         this.discountName = discountName;
     }
 
-    public int getPercent() {
-        return percent;
+    public BigDecimal getPercentage() {
+        return percentage;
     }
 
-    public void setPercent(int percent) {
-        this.percent = percent;
+    public void setPercentage(BigDecimal percentage) {
+        this.percentage = percentage;
     }
 
     public String getDescription() {

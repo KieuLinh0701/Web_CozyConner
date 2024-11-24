@@ -1,6 +1,9 @@
 package vn.iotstar.controllers;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
@@ -57,10 +60,15 @@ public class CheckoutController extends HttpServlet {
 			
 			IDiscountService discountService = new DiscountService();
 			List<Discount> listDiscountd = discountService.findAll();
-//			for (Discount x: listDiscountd) {
-//				if ()
-//			}
-			req.setAttribute("listDiscount", listDiscountd);
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis()); // Timestamp hiện tại
+	        Date currentDate = new Date();
+	        List<Discount> listDiscount = new ArrayList<>();
+			for (Discount x: listDiscountd) {
+				if (currentDate.getTime()>=x.getStartDate().getTime() && currentDate.getTime()<=x.getEndDate().getTime()) {
+					listDiscount.add(x);
+				}
+			}
+			req.setAttribute("listDiscount", listDiscount);
 			
 			req.getRequestDispatcher(Constant.CHECKOUT).forward(req, resp);
 		}
