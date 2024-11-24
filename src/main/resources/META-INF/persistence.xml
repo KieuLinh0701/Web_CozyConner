@@ -9,7 +9,7 @@
 		<class>vn.iotstar.entity.Role</class>
 		<class>vn.iotstar.entity.User</class>
 		<properties>
-		<!-- Connect 
+		<!-- Connect CSDL
 			<property name="jakarta.persistence.jdbc.url"
 				value="jdbc:sqlserver://LAPTOP-D9J937E4:1433;databaseName=CozyCorner" />
 			<property name="jakarta.persistence.jdbc.driver"
