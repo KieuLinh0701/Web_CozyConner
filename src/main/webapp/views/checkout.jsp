@@ -36,8 +36,7 @@
 									<div class="table-wrapper-responsive">
 										<h3>Your Address</h3>
 										<div id="myDiv1">
-											<label
-												for="address">${user.address.detail},
+											<label for="address">${user.address.detail},
 												${user.address.ward}, ${user.address.district},
 												${user.address.city}</label> <br>
 											<button class="btn btn-primary" onclick="modify()"
@@ -45,23 +44,25 @@
 												Modify <i class="fa fa-check"></i>
 											</button>
 										</div>
-										<form action="${pageContext.request.contextPath}/checkout/updateaddress"
+										<form
+											action="${pageContext.request.contextPath}/checkout/updateaddress"
 											method="post">
 											<div id="myDiv2" style="display: none;">
 												<div class="form-group address-edit-form">
 													<input type="hidden" name="address_id" id="address_id"
-												value="${user.address.address_id}"> 
-													<label for="city">City</label> <input type="text" id="city" name="city"
-														class="form-control" value="${user.address.city}">
-													<label for="district">District</label> <input type="text"
+														value="${user.address.address_id}"> <label
+														for="city">City</label> <input type="text" id="city"
+														name="city" class="form-control"
+														value="${user.address.city}"> <label
+														for="district">District</label> <input type="text"
 														id="district" name="district" class="form-control"
-														value="${user.address.district}"> 
-													<label
-														for="ward">Ward</label> <input type="text" id="ward" name="ward"
-														class="form-control" value="${user.address.ward}">
-													<label for="detail">Detail</label> <input type="text"
-														id="detail" name="detail" class="form-control"
-														value="${user.address.detail}"> <br>
+														value="${user.address.district}"> <label
+														for="ward">Ward</label> <input type="text" id="ward"
+														name="ward" class="form-control"
+														value="${user.address.ward}"> <label for="detail">Detail</label>
+													<input type="text" id="detail" name="detail"
+														class="form-control" value="${user.address.detail}">
+													<br>
 													<button class="btn btn-primary" type="submit"
 														style="background: black; border: 2px solid black; float: right;">
 														Save <i class="fa fa-check"></i>
@@ -174,25 +175,31 @@
 									<div class="goods-data clearfix">
 										<div class="table-wrapper-responsive">
 											<h3>Platform Vouchers</h3>
-											<table summary="Shopping cart">
-												<c:forEach var="payment" items="${listPayment}">
-													<c:if test="${payment.status == 1 }">
-														<tr>
-															<td class="goods-page-image"><c:if
-																	test="${payment.image.substring(0,5) != 'https'}">
-																	<c:url value="/image?fname=${payment.image}"
-																		var="imgUrl"></c:url>
-																</c:if> <c:if test="${payment.image.substring(0,5) == 'https'}">
-																	<c:url value="${payment.image}" var="imgUrl"></c:url>
-																</c:if> <img src="${imgUrl}" alt="${payment.name}"
-																style="height: 40px; width: 40px; margin-left: 50px;"></td>
-															<td>${payment.name}</td>
-															<td><input type="radio" name="standardExpress"
-																value="standardExpress" style="float: right;"></td>
-														</tr>
-													</c:if>
-												</c:forEach>
-											</table>
+												<c:if test="${empty listDiscount}">
+													<p>No discount is available!</p>
+												</c:if>
+												<c:otherwise>
+												<table summary="Shopping cart">
+													<c:forEach var="discount" items="${listDiscount}">
+														<c:if test="${payment.status == 1 }">
+															<tr>
+																<td class="goods-page-image"><c:if
+																		test="${payment.image.substring(0,5) != 'https'}">
+																		<c:url value="/image?fname=${payment.image}"
+																			var="imgUrl"></c:url>
+																	</c:if> <c:if
+																		test="${payment.image.substring(0,5) == 'https'}">
+																		<c:url value="${payment.image}" var="imgUrl"></c:url>
+																	</c:if> <img src="${imgUrl}" alt="${payment.name}"
+																	style="height: 40px; width: 40px; margin-left: 50px;"></td>
+																<td>${payment.name}</td>
+																<td><input type="radio" name="standardExpress"
+																	value="standardExpress" style="float: right;"></td>
+															</tr>
+														</c:if>
+													</c:forEach>
+												</table>
+											</c:otherwise>
 										</div>
 									</div>
 								</div>

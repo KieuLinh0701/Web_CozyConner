@@ -11,13 +11,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.iotstar.entity.Address;
 import vn.iotstar.entity.Cart;
+import vn.iotstar.entity.Discount;
 import vn.iotstar.entity.PaymentMethod;
 import vn.iotstar.entity.User;
 import vn.iotstar.services.IAddressService;
 import vn.iotstar.services.ICartService;
+import vn.iotstar.services.IDiscountService;
 import vn.iotstar.services.IPaymentService;
 import vn.iotstar.services.implement.AddressService;
 import vn.iotstar.services.implement.CartService;
+import vn.iotstar.services.implement.DiscountService;
 import vn.iotstar.services.implement.PaymentService;
 import vn.iotstar.utils.Constant;
 
@@ -51,6 +54,14 @@ public class CheckoutController extends HttpServlet {
 				total = total + x.getQuantity() * x.getProduct().getPrice();
 			}
 			req.setAttribute("total", total);
+			
+			IDiscountService discountService = new DiscountService();
+			List<Discount> listDiscountd = discountService.findAll();
+//			for (Discount x: listDiscountd) {
+//				if ()
+//			}
+			req.setAttribute("listDiscount", listDiscountd);
+			
 			req.getRequestDispatcher(Constant.CHECKOUT).forward(req, resp);
 		}
 
