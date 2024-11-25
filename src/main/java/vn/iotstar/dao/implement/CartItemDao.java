@@ -1,12 +1,12 @@
 package vn.iotstar.dao.implement;
 
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import vn.iotstar.configs.JPAConfig;
 import vn.iotstar.dao.ICartItemDao;
-import vn.iotstar.entity.Cart;
 import vn.iotstar.entity.CartItem;
 
 public class CartItemDao implements ICartItemDao{
@@ -21,7 +21,7 @@ public class CartItemDao implements ICartItemDao{
 	}
 
 	@Override
-	public int totalPrice(List<CartItem> listCartItem) {
+	public int totalPrice(Set<CartItem> listCartItem) {
 		int total = 0;
 		for (CartItem x : listCartItem) {
 			 total = total + x.getQuantity()*x.getProduct().getPrice();

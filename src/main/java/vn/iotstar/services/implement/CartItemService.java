@@ -1,6 +1,7 @@
 package vn.iotstar.services.implement;
 
 import java.util.List;
+import java.util.Set;
 
 import vn.iotstar.dao.ICartItemDao;
 import vn.iotstar.dao.implement.CartItemDao;
@@ -17,8 +18,9 @@ public class CartItemService implements ICartItemService{
 	}
 
 	@Override
-	public int totalPrice(List<CartItem> listCartItem) {
+	public int totalPrice(Set<CartItem> listCartItem) {
 		return cartItemDao.totalPrice(listCartItem);
 	}
+
 
 }

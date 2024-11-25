@@ -2,6 +2,7 @@ package vn.iotstar.controllers;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -43,7 +44,7 @@ public class CartController extends HttpServlet {
 				if (cart == null) {
 					req.setAttribute("alert", "Your shopping cart is currently empty. Start shopping now!");
 				} else {
-					List<CartItem> listCartItem = cartItemService.findByCartId(cart.getCart_id());
+					Set<CartItem> listCartItem = cart.getCartItems();
 					req.setAttribute("listCartItem", listCartItem);
 					
 		            int total = cartItemService.totalPrice(listCartItem);
