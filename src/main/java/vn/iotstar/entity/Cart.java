@@ -31,7 +31,7 @@ public class Cart implements Serializable {
 	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
 	private User user;
 
-	@OneToMany(mappedBy = "cart", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
 	private Set<CartItem> cartItems;
 
 	public Cart() {
