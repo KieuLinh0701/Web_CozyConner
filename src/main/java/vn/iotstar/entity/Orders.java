@@ -3,11 +3,15 @@ package vn.iotstar.entity;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -20,46 +24,52 @@ public class Orders implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
-
-
-
-	public Orders() {
-	}
-
-	/*
-	 * Trường khóa chính @Id Tham chiếu đến cột CategoryId
-	 */
-	@Id
-	@GeneratedValue
-	@Column(name="OrderId")
-	private int oustomerId;
 	
-	@Column(name="CustomerId")
-	private int customerId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="OrderId")
+	private int OrderId;
+	
+	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private User user;
 	
 	@Column(name="OrderDate")
 	private Date orderDate;
 	
 	@Column(name="Note", columnDefinition = "NVARCHAR(500) NULL")
 	private String note;
+	
+	@Column(name="status", columnDefinition = "NVARCHAR(100) NULL")
+	private String status;
+	
+	@ManyToOne
+	@JoinColumn(name = "payment_id", referencedColumnName = "payment_id", nullable = false)
+    private PaymentMethod payment;
+	
+	@ManyToOne
+	@JoinColumn(name = "discount_id", referencedColumnName = "discountId", nullable = false)
+    private Discount discount;
 
 	@OneToMany(mappedBy="orders")
-
+	private Set<OrderDetail> orderDetails;
 	
-	public int getOustomerId() {
-		return oustomerId;
+	public Orders() {
 	}
 
-	public void setOustomerId(int oustomerId) {
-		this.oustomerId = oustomerId;
+	public int getOrderId() {
+		return OrderId;
 	}
 
-	public int getCustomerId() {
-		return customerId;
+	public void setOrderId(int orderId) {
+		OrderId = orderId;
 	}
 
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Date getOrderDate() {
@@ -78,7 +88,19 @@ public class Orders implements Serializable {
 		this.note = note;
 	}
 
-	
-	
-	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Set<OrderDetail> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(Set<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
 }

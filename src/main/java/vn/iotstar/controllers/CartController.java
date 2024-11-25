@@ -10,8 +10,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.iotstar.entity.Cart;
+import vn.iotstar.entity.CartItem;
 import vn.iotstar.entity.User;
+import vn.iotstar.services.ICartItemService;
 import vn.iotstar.services.ICartService;
+import vn.iotstar.services.implement.CartItemService;
 import vn.iotstar.services.implement.CartService;
 import vn.iotstar.utils.Constant;
 
@@ -21,6 +24,7 @@ public class CartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public ICartService cartService = new CartService();
+	public ICartItemService cartItemService = new CartItemService();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,16 +39,16 @@ public class CartController extends HttpServlet {
 			if (user == null) {
 				req.setAttribute("alert", "To access your shopping cart, please log in to your account!");
 			} else {
-				List<Cart> listCart = cartService.findByUser(user.getId());
-				if (listCart.size() == 0) {
+				Cart cart = cartService.findByUser(user.getId());
+				if (cart == null) {
 					req.setAttribute("alert", "Your shopping cart is currently empty. Start shopping now!");
-				} 
-	            req.setAttribute("listCart", listCart);
-	            int total = 0;
-				for (Cart x : listCart) {
-					 total = total + x.getQuantity()*x.getProduct().getPrice();
+				} else {
+					List<CartItem> listCartItem = cartItemService.findByCartId(cart.getCart_id());
+					req.setAttribute("listCartItem", listCartItem);
+					
+		            int total = cartItemService.totalPrice(listCartItem);
+					req.setAttribute("total", total);
 				}
-				req.setAttribute("total", total);
 			}
 			req.getRequestDispatcher(Constant.CART).forward(req, resp);
 		}

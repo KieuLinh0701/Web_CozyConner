@@ -40,38 +40,38 @@ public class CheckoutController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 
-		if (url.contains("checkout")) {
-			HttpSession session = req.getSession();
-			User user = (User) session.getAttribute("account");
-			req.setAttribute("user", user);
-
-			IPaymentService paymentService = new PaymentService();
-			List<PaymentMethod> listPayment = paymentService.findAll();
-			req.setAttribute("listPayment", listPayment);
-
-			ICartService cartService = new CartService();
-			List<Cart> listCart = cartService.findByUser(user.getId());
-			req.setAttribute("listCart", listCart);
-			int total = 0;
-			for (Cart x : listCart) {
-				total = total + x.getQuantity() * x.getProduct().getPrice();
-			}
-			req.setAttribute("total", total);
-			
-			IDiscountService discountService = new DiscountService();
-			List<Discount> listDiscountd = discountService.findAll();
-			Timestamp timestamp = new Timestamp(System.currentTimeMillis()); // Timestamp hiện tại
-	        Date currentDate = new Date();
-	        List<Discount> listDiscount = new ArrayList<>();
-			for (Discount x: listDiscountd) {
-				if (currentDate.getTime()>=x.getStartDate().getTime() && currentDate.getTime()<=x.getEndDate().getTime()) {
-					listDiscount.add(x);
-				}
-			}
-			req.setAttribute("listDiscount", listDiscount);
-			
-			req.getRequestDispatcher(Constant.CHECKOUT).forward(req, resp);
-		}
+//		if (url.contains("checkout")) {
+//			HttpSession session = req.getSession();
+//			User user = (User) session.getAttribute("account");
+//			req.setAttribute("user", user);
+//
+//			IPaymentService paymentService = new PaymentService();
+//			List<PaymentMethod> listPayment = paymentService.findAll();
+//			req.setAttribute("listPayment", listPayment);
+//
+//			ICartService cartService = new CartService();
+//			List<Cart> listCart = cartService.findByUser(user.getId());
+//			req.setAttribute("listCart", listCart);
+//			int total = 0;
+//			for (Cart x : listCart) {
+//				total = total + x.getQuantity() * x.getProduct().getPrice();
+//			}
+//			req.setAttribute("total", total);
+//			
+//			IDiscountService discountService = new DiscountService();
+//			List<Discount> listDiscountd = discountService.findAll();
+//			Timestamp timestamp = new Timestamp(System.currentTimeMillis()); // Timestamp hiện tại
+//	        Date currentDate = new Date();
+//	        List<Discount> listDiscount = new ArrayList<>();
+//			for (Discount x: listDiscountd) {
+//				if (currentDate.getTime()>=x.getStartDate().getTime() && currentDate.getTime()<=x.getEndDate().getTime()) {
+//					listDiscount.add(x);
+//				}
+//			}
+//			req.setAttribute("listDiscount", listDiscount);
+//			
+//			req.getRequestDispatcher(Constant.CHECKOUT).forward(req, resp);
+//		}
 
 	}
 

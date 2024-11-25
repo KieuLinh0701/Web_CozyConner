@@ -1,36 +1,47 @@
 package vn.iotstar.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "carts")
 @NamedQuery(name = "Cart.findAll", query = "SELECT c FROM Cart c")
-public class Cart implements Serializable{
-	
+public class Cart implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private User user;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cart_id")
+	private int cart_id;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "product_id", nullable = false)
-    private Product product;
-	
-    @Column(name="quantity")
-	private int quantity;
+	@OneToOne
+	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+	private User user;
+
+	@OneToMany(mappedBy = "cart")
+	private Set<CartItem> cartItems;
 
 	public Cart() {
+	}
+
+	public int getCart_id() {
+		return cart_id;
+	}
+
+	public void setCart_id(int cart_id) {
+		this.cart_id = cart_id;
 	}
 
 	public User getUser() {
@@ -41,19 +52,11 @@ public class Cart implements Serializable{
 		this.user = user;
 	}
 
-	public Product getProduct() {
-		return product;
+	public Set<CartItem> getCartItems() {
+		return cartItems;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setCartItems(Set<CartItem> cartItems) {
+		this.cartItems = cartItems;
 	}
 }

@@ -19,7 +19,7 @@
 						<div class="goods-data clearfix">
 							<div class="table-wrapper-responsive">
 								<table summary="Shopping cart">
-									<c:forEach var="cart" items="${listCart}">
+									<c:forEach var="cartItem" items="${listCartItem}">
 										<tr>
 											<th class="goods-page-image">Image</th>
 											<th class="goods-page-description">Description</th>
@@ -29,33 +29,33 @@
 										</tr>
 										<tr>
 											<td class="goods-page-image"><a href="#"> <c:if
-														test="${cart.product.image.substring(0,5) != 'https'}">
-														<c:url value="/image?fname=${cart.product.image}"
+														test="${cartItem.product.image.substring(0,5) != 'https'}">
+														<c:url value="/image?fname=${cartItem.product.image}"
 															var="imgUrl"></c:url>
 													</c:if> <c:if
-														test="${cart.product.image.substring(0,5) == 'https'}">
-														<c:url value="${cart.product.image}" var="imgUrl"></c:url>
-													</c:if> <img src="${imgUrl}" alt="${cart.product.name}">
+														test="${cartItem.product.image.substring(0,5) == 'https'}">
+														<c:url value="${cartItem.product.image}" var="imgUrl"></c:url>
+													</c:if> <img src="${imgUrl}" alt="${cartItem.product.name}">
 											</a></td>
 											<td class="goods-page-description">
-												<p>Material: ${cart.product.material}</p>
-												<p>Color: ${cart.product.color}</p>
-												<p>Size: height: ${cart.product.height} -
-													length: ${cart.product.length} - width:
-													${cart.product.width}</p>
+												<p>Material: ${cartItem.product.material}</p>
+												<p>Color: ${cartItem.product.color}</p>
+												<p>Size: height: ${cartItem.product.height} -
+													length: ${cartItem.product.length} - width:
+													${cartItem.product.width}</p>
 											</td>
 											<td class="goods-page-quantity">
 												<div class="product-quantity">
 													<input id="product-quantity" type="text"
-														value="${cart.quantity}" readonly
+														value="${cartItem.quantity}" readonly
 														class="form-control input-sm">
 												</div>
 											</td>
-											<td class="goods-page-price"><strong>${cart.product.price}</strong>
+											<td class="goods-page-price"><strong>${cartItem.product.price}</strong>
 											</td>
-											<td class="goods-page-total"><strong>${cart.product.price * cart.quantity}</strong>
+											<td class="goods-page-total"><strong>${cartItem.product.price * cartItem.quantity}</strong>
 											</td>
-											<td class="del-goods-col"><a class="del-goods" href="${pageContext.request.contextPath}/cart/delete?=userid${cart.user.id}&&productid=${cart.product.product_id}">&nbsp;</a>
+											<td class="del-goods-col"><a class="del-goods" href="${pageContext.request.contextPath}/cart/delete">&nbsp;</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -64,7 +64,7 @@
 
 							<div class="shopping-total">
 								<ul>
-									<li><em>Total</em> <strong class="price">${total }</strong>
+									<li><em>Total</em> <strong class="price">${total}</strong>
 									</li>
 								</ul>
 							</div>

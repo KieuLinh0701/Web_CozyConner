@@ -52,37 +52,6 @@
 					class="top-cart-info-count">0 items</a>
 			</div>
 			<i class="fa fa-shopping-cart" style="background-color: black"></i>
-
-			<div class="top-cart-content-wrapper">
-				<div class="top-cart-content" style="border: black">
-					<c:if test="${alert != null}">
-						<h3>${alert}</h3>
-					</c:if>
-					<c:if test="${alert == null}">
-						<ul class="scroller" style="height: 250px;">
-							<c:forEach var="cart" items="${listCart}">
-								<li><a href="${pageContext.request.contextPath}/#"> <c:if
-											test="${cart.product.image.substring(0,5) != 'https'}">
-											<c:url value="/image?fname=${cart.product.image}"
-												var="imgUrl"></c:url>
-										</c:if> <c:if test="${cart.product.image.substring(0,5) == 'https'}">
-											<c:url value="${cart.product.image}" var="imgUrl"></c:url>
-										</c:if> <img src="${imgUrl}" alt="${cart.product.name}">
-								</a> <span class="cart-content-count"> x ${cart.quantity}</span> <strong>
-										<a href="${pageContext.request.contextPath}/#">${cart.product.name}</a>
-								</strong> <em>${cart.product.name}</em> <a href="javascript:void(0);"
-									class="del-goods">&nbsp;</a></li>
-							</c:forEach>
-						</ul>
-					</c:if>
-					<div class="text-right">
-						<a href="${pageContext.request.contextPath}/cart"
-							class="btn btn-default" style="background-color: black">View
-							Cart</a> <a href="${pageContext.request.contextPath}/#"
-							class="btn btn-primary" style="background-color: black">Checkout</a>
-					</div>
-				</div>
-			</div>
 		</div>
 		<!--END CART -->
 
