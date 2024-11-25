@@ -86,7 +86,7 @@
 								<div class="table-wrapper-responsive">
 									<h3>Products</h3>
 									<table summary="Shopping cart">
-										<c:forEach var="cart" items="${listCart}">
+										<c:forEach var="cartItem" items="${listCartItem}">
 											<tr>
 												<th class="goods-page-image">Image</th>
 												<th class="goods-page-description">Description</th>
@@ -96,24 +96,24 @@
 											</tr>
 											<tr>
 												<td class="goods-page-image"><a href="#"> <c:if
-															test="${cart.product.image.substring(0,5) != 'https'}">
-															<c:url value="/image?fname=${cart.product.image}"
+															test="${cartItem.product.image.substring(0,5) != 'https'}">
+															<c:url value="/image?fname=${cartItem.product.image}"
 																var="imgUrl"></c:url>
 														</c:if> <c:if
-															test="${cart.product.image.substring(0,5) == 'https'}">
-															<c:url value="${cart.product.image}" var="imgUrl"></c:url>
-														</c:if> <img src="${imgUrl}" alt="${cart.product.name}">
+															test="${cartItem.product.image.substring(0,5) == 'https'}">
+															<c:url value="${cartItem.product.image}" var="imgUrl"></c:url>
+														</c:if> <img src="${imgUrl}" alt="${cartItem.product.name}">
 												</a></td>
 												<td class="goods-page-description">
-													<p>Material: ${cart.product.material}</p>
-													<p>Color: ${cart.product.color}</p>
-													<p>Size: height: ${cart.product.height} - length:
-														${cart.product.length} - width: ${cart.product.width}</p>
+													<p>Material: ${cartItem.product.material}</p>
+													<p>Color: ${cartItem.product.color}</p>
+													<p>Size: height: ${cartItem.product.height} - length:
+														${cartItem.product.length} - width: ${cartItem.product.width}</p>
 												</td>
-												<td class="goods-page-price"><p>${cart.quantity}</p></td>
-												<td class="goods-page-price"><p>${cart.product.price}</p>
+												<td class="goods-page-price"><p>${cartItem.quantity}</p></td>
+												<td class="goods-page-price"><p>${cartItem.product.price}</p>
 												</td>
-												<td class="goods-page-total"><p>${cart.product.price * cart.quantity}</p>
+												<td class="goods-page-total"><p>${cartItem.product.price * cartItem.quantity}</p>
 												</td>
 											</tr>
 										</c:forEach>
