@@ -80,31 +80,31 @@
                                     </form>
                                 </div>
                                 <!-- END PERSONAL INFO TAB -->
-                                <!-- CHANGE AVATAR TAB -->
+                                 <!-- CHANGE AVATAR TAB -->
                                 <div class="tab-pane" id="tab_1_2">
-                                    <form action="#" role="form">
+                                    <form action="${pageContext.request.contextPath}/uploadAvatar" method="post" enctype="multipart/form-data" role="form">
                                         <div class="form-group">
                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                 <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt=""/>
+                                                    <img id="avatarPreview" src="${pageContext.request.contextPath}/${sessionScope.account.image}" alt="User Avatar" />
                                                 </div>
                                                 <div>
                                                     <span class="btn default btn-file">
-                                                    <span class="fileinput-new">Select image</span>
-                                                    <span class="fileinput-exists">Change</span>
-                                                    <input type="file" name="avatar">
+                                                        <span class="fileinput-new">Select image</span>
+                                                        <span class="fileinput-exists">Change</span>
+                                                        <input type="file" name="avatar" id="avatarInput" required>
                                                     </span>
-                                                    <a href="#" class="btn default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                                    <a href="#" class="btn default fileinput-exists" data-dismiss="fileinput" id="removeAvatarBtn">Remove</a>
                                                 </div>
                                             </div>
                                             <div class="clearfix margin-top-10">
                                                 <span class="label label-danger">NOTE!</span>
-                                                <span>Attached image thumbnail is supported in Latest browsers.</span>
+                                                <span>Attached image thumbnail is supported in latest browsers.</span>
                                             </div>
                                         </div>
                                         <div class="margin-top-10">
                                             <button type="submit" class="btn green-haze">Submit</button>
-                                            <a href="#" class="btn default">Cancel</a>
+                                            <a href="#" class="btn default" id="cancelBtn">Cancel</a>
                                         </div>
                                     </form>
                                 </div>
@@ -172,3 +172,27 @@
     </div>
 </div>
 <!-- END CONTENT -->
+
+<script>
+    // Khi người dùng chọn ảnh mới, cập nhật ảnh preview
+    document.getElementById('avatarInput').addEventListener('change', function(event) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('avatarPreview').src = e.target.result;  // Hiển thị ảnh đã chọn
+        };
+        reader.readAsDataURL(this.files[0]);
+    });
+
+    // Khi nhấn "Remove", quay lại ảnh mặc định
+    document.getElementById('removeAvatarBtn').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('avatarPreview').src = "${pageContext.request.contextPath}/${sessionScope.account.image}";  // Hiển thị ảnh mặc định
+        document.getElementById('avatarInput').value = '';  // Reset input file
+    });
+
+    // Khi nhấn "Cancel", reset input file
+    document.getElementById('cancelBtn').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('avatarInput').value = '';  // Reset input file
+    });
+</script>
