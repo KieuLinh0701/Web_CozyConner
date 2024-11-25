@@ -150,4 +150,21 @@ public class UserDao implements IUserDao {
 		return false;
 	}
 
+	@Override
+	public Boolean checkExistEmail(String email) {
+		EntityManager em = JPAConfig.getEntityManager();
+
+		try {
+			Long count = (Long) em.createQuery("SELECT COUNT(c) FROM User c WHERE c.email = :email")
+					.setParameter("phone", email).getSingleResult();
+			return count > 0;
+		} catch (NoResultException e) {
+			return false;
+		} finally {
+			if (em.isOpen()) {
+				em.close();
+			}
+		}
+	}
+
 }
