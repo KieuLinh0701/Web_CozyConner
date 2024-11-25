@@ -27,4 +27,6 @@ public interface IUserDao {
 	Boolean checkExistPhone(String phone);
 	
 	Boolean checkCode(String email, String code);
+	
+	Boolean checkExistEmail(String email);
 }

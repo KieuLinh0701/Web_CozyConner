@@ -1,15 +1,19 @@
-																																																	package vn.iotstar.entity;
+package vn.iotstar.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "discount")
+@NamedQuery(name = "Discount.findAll", query = "SELECT v FROM Discount v")
 public class Discount implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -22,8 +26,8 @@ public class Discount implements Serializable {
     @Column(name = "discountName", columnDefinition = "NVARCHAR(50) NOT NULL")
     private String discountName;
 
-    @Column(name = "percent", columnDefinition = "INT NOT NULL")
-    private int percent;
+    @Column(name = "percentage", precision = 5, scale = 2)
+    private BigDecimal percentage;
 
     @Column(name = "description", columnDefinition = "NVARCHAR(255) NULL")
     private String description;
@@ -31,15 +35,23 @@ public class Discount implements Serializable {
     @Column(name = "quantity", columnDefinition = "INT NOT NULL")
     private int quantity;
 
+    @Column(name = "startDate")
+    private Timestamp startDate;
+
+    @Column(name = "endDate")
+    private Timestamp endDate;
+
     public Discount() {
     }
 
-    public Discount(String discountName, int percent, String description, int quantity) {
+    public Discount(String discountName, BigDecimal percentage, String description, int quantity, Timestamp startDate, Timestamp endDate) {
         super();
         this.discountName = discountName;
-        this.percent = percent;
+        this.percentage = percentage;
         this.description = description;
         this.quantity = quantity;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public int getDiscountId() {
@@ -58,12 +70,12 @@ public class Discount implements Serializable {
         this.discountName = discountName;
     }
 
-    public int getPercent() {
-        return percent;
+    public BigDecimal getPercentage() {
+        return percentage;
     }
 
-    public void setPercent(int percent) {
-        this.percent = percent;
+    public void setPercentage(BigDecimal percentage) {
+        this.percentage = percentage;
     }
 
     public String getDescription() {
@@ -80,5 +92,21 @@ public class Discount implements Serializable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Timestamp getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
+    }
+
+    public Timestamp getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Timestamp endDate) {
+        this.endDate = endDate;
     }
 }

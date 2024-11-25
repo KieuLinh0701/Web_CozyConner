@@ -44,6 +44,14 @@ public class Address implements Serializable{
 		this.detail = detail;
 	}
 
+	public Address(int address_id, String city, String district, String ward, String detail) {
+		this.address_id = address_id;
+		this.city = city;
+		this.district = district;
+		this.ward = ward;
+		this.detail = detail;
+	}
+
 	public int getAddress_id() {
 		return address_id;
 	}

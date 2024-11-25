@@ -15,4 +15,9 @@ public class PaymentService implements IPaymentService{
 	public List<PaymentMethod> findAll() {
 		return paymentDao.findAll();
 	}
+
+	@Override
+	public PaymentMethod findById(int payment_id) {
+		return paymentDao.findById(payment_id);
+	}
 }

@@ -2,6 +2,7 @@ package vn.iotstar.services;
 
 import java.util.List;
 
+
 import vn.iotstar.entity.User;
 
 public interface IUserService {
@@ -27,4 +28,6 @@ public interface IUserService {
 	Boolean checkExistPhone(String phone);
 	
 	Boolean checkCode(String email, String code);
+	
+	Boolean checkExistEmail(String email);
 }
