@@ -3,6 +3,7 @@ package vn.iotstar.entity;
 import java.io.Serializable;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Cart implements Serializable {
 	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
 	private User user;
 
-	@OneToMany(mappedBy = "cart")
+	@OneToMany(mappedBy = "cart", cascade = CascadeType.PERSIST)
 	private Set<CartItem> cartItems;
 
 	public Cart() {

@@ -113,6 +113,8 @@ public class CheckoutController extends HttpServlet {
 			
 			order.setOrderDate(new Date());
 			
+			order.setStatus("Waiting for order approval");
+			
 			String note = req.getParameter("note");
 			
 			int payment_id = Integer.parseInt(req.getParameter("payment"));
@@ -123,9 +125,12 @@ public class CheckoutController extends HttpServlet {
 			IDiscountService discountService = new DiscountService();
 			Discount discount = discountService.findById(discount_id);
 			
-			
-
-			resp.sendRedirect(req.getContextPath() + "/checkout");
+			if (payment.getName().contains("Bank")) {
+				
+			}
+			else {
+				
+			}
 		}
 	}
 

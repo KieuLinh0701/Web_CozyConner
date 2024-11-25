@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -49,7 +50,7 @@ public class Orders implements Serializable {
 	@JoinColumn(name = "discount_id", referencedColumnName = "discountId", nullable = false)
     private Discount discount;
 
-	@OneToMany(mappedBy="orders")
+	@OneToMany(mappedBy="orders", cascade = CascadeType.PERSIST)
 	private Set<OrderDetail> orderDetails;
 	
 	public Orders() {
