@@ -58,6 +58,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">Address</label>
+                                            <br>
                                             <label class="control-label">Ward</label>
                                             <input type="text" name="ward" value="${sessionScope.account.address.ward}" class="form-control" placeholder="Tang Nhon Phu A"/>
                                         </div>
@@ -110,27 +111,27 @@
                                 </div>
                                 <!-- END CHANGE AVATAR TAB -->
                                 <!-- CHANGE PASSWORD TAB -->
-                                <div class="tab-pane" id="tab_1_3">
-                                    <form action="#" method="post">
-                                        <div class="form-group">
-                                            <label class="control-label">Current Password</label>
-                                            <input type="password" name="currentPassword" class="form-control"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">New Password</label>
-                                            <input type="password" name="newPassword" class="form-control"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">Re-type New Password</label>
-                                            <input type="password" name="retypeNewPassword" class="form-control"/>
-                                        </div>
-                                        <div class="margin-top-10">
-                                            <button type="submit" class="btn green-haze">Change Password</button>
-                                            <a href="#" class="btn default">Cancel</a>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!-- END CHANGE PASSWORD TAB -->
+								<div class="tab-pane" id="tab_1_3">
+								    <form action="${pageContext.request.contextPath}/changePassword" method="post">
+								        <div class="form-group">
+								            <label class="control-label">Current Password</label>
+								            <input type="password" name="currentPassword" class="form-control"/>
+								        </div>
+								        <div class="form-group">
+								            <label class="control-label">New Password</label>
+								            <input type="password" name="newPassword" class="form-control"/>
+								        </div>
+								        <div class="form-group">
+								            <label class="control-label">Re-type New Password</label>
+								            <input type="password" name="retypeNewPassword" class="form-control"/>
+								        </div>
+								        <div class="margin-top-10">
+								            <button type="submit" class="btn green-haze">Change Password</button>
+								            <a href="#" class="btn default">Cancel</a>
+								        </div>
+								    </form>
+								</div>
+								<!-- END CHANGE PASSWORD TAB -->
                                 <!-- DELETE ACCOUNT TAB -->
                                 <div class="tab-pane" id="tab_1_4">
                                     <form action="#" method="post">

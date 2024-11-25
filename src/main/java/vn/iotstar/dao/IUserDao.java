@@ -29,4 +29,6 @@ public interface IUserDao {
 	Boolean checkCode(String email, String code);
 	
 	Boolean checkExistEmail(String email);
+	
+	boolean checkPassword(String email, String password);
 }

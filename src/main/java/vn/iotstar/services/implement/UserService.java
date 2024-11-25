@@ -76,4 +76,9 @@ public class UserService implements IUserService{
 		return userDao.checkExistEmail(email);
 	}
 
+	@Override
+	public boolean checkPassword(String email, String password) {
+		return userDao.checkPassword(email, password);
+	}
+
 }
