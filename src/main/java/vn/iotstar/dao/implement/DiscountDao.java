@@ -6,9 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import vn.iotstar.configs.JPAConfig;
 import vn.iotstar.dao.IDiscountDao;
-import vn.iotstar.dao.IPaymentDao;
 import vn.iotstar.entity.Discount;
-import vn.iotstar.entity.PaymentMethod;
 
 public class DiscountDao implements IDiscountDao {
 
@@ -17,5 +15,12 @@ public class DiscountDao implements IDiscountDao {
 		EntityManager enma = JPAConfig.getEntityManager();
 		TypedQuery<Discount> query = enma.createNamedQuery("Discount.findAll", Discount.class);
 		return query.getResultList();
+	}
+
+	@Override
+	public Discount findById(int discount_id) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		Discount discount = enma.find(Discount.class, discount_id);
+		return discount;
 	}
 }

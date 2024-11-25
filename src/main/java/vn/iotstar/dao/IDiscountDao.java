@@ -8,5 +8,7 @@ import vn.iotstar.entity.Discount;
 public interface IDiscountDao {
 	
 	List<Discount> findAll();
+	
+	Discount findById(int discount_id);
 
 }

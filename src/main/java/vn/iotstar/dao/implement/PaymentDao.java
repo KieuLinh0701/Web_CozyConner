@@ -7,6 +7,7 @@ import jakarta.persistence.TypedQuery;
 import vn.iotstar.configs.JPAConfig;
 import vn.iotstar.dao.IPaymentDao;
 import vn.iotstar.entity.PaymentMethod;
+import vn.iotstar.entity.User;
 
 public class PaymentDao implements IPaymentDao {
 
@@ -15,5 +16,12 @@ public class PaymentDao implements IPaymentDao {
 		EntityManager enma = JPAConfig.getEntityManager();
 		TypedQuery<PaymentMethod> query = enma.createNamedQuery("PaymentMethod.findAll", PaymentMethod.class);
 		return query.getResultList();
+	}
+
+	@Override
+	public PaymentMethod findById(int payment_id) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		PaymentMethod payment = enma.find(PaymentMethod.class, payment_id);
+		return payment;
 	}
 }

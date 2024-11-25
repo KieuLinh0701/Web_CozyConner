@@ -9,11 +9,16 @@ import vn.iotstar.services.IDiscountService;
 
 public class DiscountService implements IDiscountService{
 	
-	IDiscountDao cartDao = new DiscountDao();
+	IDiscountDao discountDao = new DiscountDao();
 	
 	@Override
 	public List<Discount> findAll() {
-		return cartDao.findAll();
+		return discountDao.findAll();
+	}
+
+	@Override
+	public Discount findById(int discount_id) {
+		return discountDao.findById(discount_id);
 	}
 
 }
