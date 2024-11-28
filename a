@@ -1,0 +1,55 @@
+[33m51efe93[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m edit something about myaccount
+[33mbdbfe28[m Fix entity cart
+[33me2d9638[m Fix entity Cart, Orders
+[33meb69b18[m Fix entity Orders, post order
+[33m4fadd95[m Fix view checkout
+[33mde7296a[m modify cartcontroller
+[33m5f22989[m Fix Entity Orders, Cart, view cart; Add Entity OrderDetail, CartItem
+[33ma2e4c65[m Fix checkout
+[33mba156f9[m Fix view checkout
+[33m36d5ca6[m Fix view checkout
+[33m8ae7452[m Edit something in myAcount.jsp
+[33m206db09[m Check commit
+[33m0fcc737[m Check commit thử
+[33mba8665a[m fix entity discount
+[33m61ce5b0[m Merge branch 'master' of https://github.com/KieuLinh0701/Web_CozyConner
+[33m1df8c80[m update address in checkout
+[33m45df4a2[m f
+[33m8342060[m Fix register
+[33meea8172[m Them list/ fe order chua hoan thanh controller
+[33ma1fe564[m Fix Register
+[33m0e6c765[m View checkout
+[33m09ef800[m View checkout
+[33m540cd5a[m entity Discount, Appointment
+[33mf0ae116[m commit to pull
+[33m3073fa8[m try to fix
+[33m29a2dd0[m fix
+[33ma1e948e[m Them header cho admin, them cac lable trong header
+[33m6546441[m Merge branch 'master' of https://github.com/KieuLinh0701/Web_CozyConner
+[33m7825b08[m view checkout
+[33m2186186[m Merge branch 'master' of https://github.com/KieuLinh0701/Web_CozyConner into mi
+[33mf64885c[m commit to pull
+[33m89c1d0d[m Merge pull request #1 from KieuLinh0701/phuong
+[33m12bc33d[m Them entity review
+[33m88aca1d[m Entity Payment
+[33mc834780[m Entity Address
+[33m6b3ce1f[m view check-out
+[33m746ce9d[m Update
+[33me26387f[m View Cart
+[33m82d6555[m Entity Cart
+[33mda37bed[m trying to fix {add}
+[33m302ef79[m them entity Order
+[33m516457d[m Fix
+[33m78c7c00[m Fix
+[33m16fc53c[m Fix
+[33mf3763d6[m[33m ([m[1;31morigin/mi[m[33m)[m them Customer entity
+[33mcbe9c79[m Fix logo
+[33m526cb36[m Them entity product, category
+[33m07ec2d5[m[33m ([m[1;31morigin/mi-entity[m[33m)[m Fix ten
+[33m014fd6e[m Them li
+[33mae27f42[m Them hien thi password, chua chinh thanh tim kiem và giao dien cho admin
+[33m06332a2[m Usecase forgot pasword
+[33m4d16767[m Usecase DangKy
+[33m191c2c3[m usecase Login nhung chua hoan thien home admin
+[33mace14fa[m Form Register
+[33me1fe7c4[m Push
