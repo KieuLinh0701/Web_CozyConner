@@ -2,6 +2,7 @@ package vn.iotstar.dao;
 
 import java.util.List;
 
+
 import vn.iotstar.entity.User;
 
 public interface IUserDao {
@@ -29,4 +30,6 @@ public interface IUserDao {
 	Boolean checkCode(String email, String code);
 	
 	Boolean checkExistEmail(String email);
+	
+	boolean checkPassword(String email, String password);
 }
